@@ -1,0 +1,61 @@
+{
+  "template": "ШАБЛОН СТРУКТУРЫ ЛАБОРАТОРНОЙ РАБОТЫ.docx",
+  "document": "lab2.docx",
+  "model": "qwen3:8b",
+  "result": {
+    "errors": [
+      {
+        "section": "Общий",
+        "error_type": "неизвестно",
+        "description": "Отсутствует раздел 'Задание' с корректным использованием \\section{Задание}.",
+        "severity": "medium"
+      },
+      {
+        "section": "Общий",
+        "error_type": "неизвестно",
+        "description": "Раздел 'Реализация' объединяет подразделы 'Метод наискорейшего градиентного спуска' и 'Метод золотого сечения', которые должны быть раздельными.",
+        "severity": "medium"
+      },
+      {
+        "section": "Общий",
+        "error_type": "неизвестно",
+        "description": "В формуле MAPE возможна деление на ноль при оптимальной точке с нулевыми координатами.",
+        "severity": "medium"
+      },
+      {
+        "section": "Общий",
+        "error_type": "неизвестно",
+        "description": "Некорректное использование \\textbackslash{} в строке final\\textbackslash{}_mape = mape(...), требует двойного экранирования.",
+        "severity": "medium"
+      },
+      {
+        "section": "Общий",
+        "error_type": "неизвестно",
+        "description": "В коде (Courier New) используется неверный шрифт по сравнению с основным текстом (Times New Roman).",
+        "severity": "medium"
+      },
+      {
+        "section": "Общий",
+        "error_type": "неизвестно",
+        "description": "В коде указано 'Межстрочный интервал-None', но шаблон требует 'Межстрочный интервал-1.5'.",
+        "severity": "medium"
+      },
+      {
+        "section": "Общий",
+        "error_type": "неизвестно",
+        "description": "В комментариях указано 'Правило-ONE_POINT_FIVE', но в коде отсутствует соответствующее оформление.",
+        "severity": "medium"
+      },
+      {
+        "section": "Общий",
+        "error_type": "неизвестно",
+        "description": "В строке print(f'...\\textbackslash{}{final\\textbackslash{}_mape:.3f\\textbackslash{}}\\textbackslash{}%') используется некорректное экранирование \\textbackslash{}.",
+        "severity": "medium"
+      }
+    ],
+    "compliance_score": 65,
+    "summary": "Документ содержит структурные ошибки (объединение разделов, отсутствующие разделы), ошибки в коде (некорректное экранирование, возможное деление на ноль) и нарушения форматирования (неправильный шрифт, межстрочный интервал, правило интервала)."
+  },
+  "timestamp": "2026-03-01 16:24:47",
+  "checked_formatting": true
+}

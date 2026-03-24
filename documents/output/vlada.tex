@@ -1,0 +1,562 @@
+\documentclass{article}%
+\usepackage[T1]{fontenc}%
+\usepackage[utf8]{inputenc}%
+\usepackage{lmodern}%
+\usepackage{textcomp}%
+\usepackage{lastpage}%
+%
+\usepackage[russian]{babel}%
+\usepackage{fontenc}%
+\usepackage{graphicx}%
+\usepackage{float}%
+\usepackage{longtable}%
+\usepackage{array}%
+%
+\begin{document}%
+\normalsize%
+\begin{longtable}{|>{\centering\arraybackslash}p{17.176750000000002cm}|}%
+\hline%
+ФГБОУ ВО ЮГОРСКИЙ ГОСУДАРСТВЕННЫЙ УНИВЕРСИТЕТ% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+ \\ \hline \endfirsthead%
+\hline%
+ИНЖЕНЕРНАЯ ШКОЛА ЦИФРОВЫХ ТЕХНОЛОГИЙ% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+ \\ \hline%
+\end{longtable}%
+\begin{center}%
+ОТЧЕТ% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{center}%
+\begin{center}%
+по лабораторной работе № 5:% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{center}%
+\begin{center}%
+«Перцептрон Розенблатта»% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{center}%
+\begin{center}%
+По дисциплине:% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{center}%
+\begin{center}%
+«Машинное обучение»% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{center}%
+\begin{flushleft}%
+Выполнила: студентка группы 1521б% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Попова Владислава Олеговна% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Проверил: старший преподаватель% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Шицелов Анатолий Вячеславович% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{center}%
+г. Ханты-Мансийск, 2025 г.% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{center}%
+\begin{center}%
+\textbf{Содержание}% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{center}%
+\begin{flushleft}%
+% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-None Правило-None %
+%
+\end{flushleft}%
+\section{Описание работы}%
+\begin{flushleft}%
+\textbf{Цель работы}% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+: % Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+реализация перцептрона для задачи регрессии;% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+освоение методов настройки весов при помощи градиентного спуска;% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+визуальный анализ аппроксимируемой функции и качества модели;% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+понимание различий между классификацией и регрессией в контексте нейросетей.% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+	% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+\textbf{Задачи:}% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Сгенерировать обучающий набор данных % Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Задать входные данные x равномерно или нормально распределённые на некотором отрезке;% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Задать целевые значения y=f(x)+e где f(x) - некоторая функция, а e - случайный шум% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Реализовать перцептрон% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Один входной слой, один выход, линейная активация% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Инициализация весов случайными значениями % Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Вычисление предсказаний и среднеквадратичной ошибки % Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Обновление весов по градиентному спуску % Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Проанализировать результаты % Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Построить график зависимости истинных и предсказанных значений % Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Построить график MSE по эпохам % Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Визуально оценить, насколько хорошо модель аппроксимирует функцию % Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Провести эксперименты с параметрами% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Изменить скорость обучения и оценить её влияние на сходимость % Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Изменить количество эпох;% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Для 11 варианта исходные параметры следующие:% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Синус с медленным дрейфом: sin(0.07 * t) + 0.002 * t% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-None Правило-None %
+%
+\end{flushleft}%
+\begin{flushleft}%
+ Шум: нормальное распределение N(0, 0.1²)% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-None Правило-None %
+%
+\end{flushleft}%
+\begin{flushleft}%
+ Размер окна: 7% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-None Правило-None %
+%
+\end{flushleft}%
+\subsection{ Ход работы}%
+\begin{flushleft}%
+Формулы, которые понадобятся для выполнения работы:% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{enumerate}%
+\item Предсказание модели:% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\item %
+\item MSE:% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\item %
+\item Дельта правило для обновления весов:% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\item %
+\item Дельта правило для обновления смещения:% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\item %
+\item \textit{n}% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+ – скорость обучения(learning\textbackslash{}_rate)% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\item \textit{X }% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+– входные признаки% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+
+yi,y\textbackslash{}^{}i% Шрифт-Arial Размер шрифта-10.5 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\begin{flushleft}%
+В ходе реализации лабораторной работы были импортированы следующие модули Python (Листинг 1):% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Листинг 1 – Импорт модулей% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+import numpy as np% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+import matplotlib.pyplot as plt% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Задаем значения на основании своего варианта (Листинг 2):% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Листинг 2 – Генерация исходных данных% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+np.random.seed(1)% Шрифт-None Размер шрифта-None Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+t = np.linspace(0, 500, 500)% Шрифт-None Размер шрифта-None Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+f = np.sin(0.07 * t) + 0.002 * t% Шрифт-None Размер шрифта-None Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+shum = np.random.normal(0, 0.1**2, 500)% Шрифт-None Размер шрифта-None Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+fs = f + shum% Шрифт-None Размер шрифта-None Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Реализуем создание датасета (Листинг 3):% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Листинг 3 – Функция создание датасета% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+x, y = [], []% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+for i in range(7, len(fs)):% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+    x.append(fs[i-7:i])% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+    y.append(fs[i])% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+np.array(x)% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+np.array(y)% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Функция предназначена для преобразования временного ряда в набор данных, пригодный для обучения модели машинного обучения. Она использует метод скользящего окна, чтобы сформировать входные и выходные данные.% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Реализуем нормализацию данных (Листинг 4):% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Листинг 4 – Функция нормализации данных% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+mid = np.mean(x)% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+disp = np.std(x)% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+x\textbackslash{}_norm = (x - mid)/disp% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Функция выполняет нормализацию входных данных, приводя их к нулевому среднему и единичному стандартному отклонению. % Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Разделение датасета на тренировочный и тестовый (Листинг 5):% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Листинг 5 – Функция разделения датасета% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+col = int(len(x) * 0.8)% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+x\textbackslash{}_tren = x\textbackslash{}_norm[:col]% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+x\textbackslash{}_test = x\textbackslash{}_norm[col:]% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+y\textbackslash{}_tren = y[:col]% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+y\textbackslash{}_test = y[col:]% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Функция разделяет данные на тренировочную и тестовую выборки с заданной долей разделения.% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Реализуем функцию предсказания (Листинг 6):% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Листинг 6 – Функция предсказания% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+abrakadabra = np.dot(x\textbackslash{}_tren[i], ves) + smesh% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Функция реализует процесс предсказания выходного значения на основе линейной комбинации входных признаков, весов модели и смещения.% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Реализуем функцию перцептрона (Листинг 7):% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Листинг 7 – Функция перцептрона% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+def obuch(lern\textbackslash{}_rait, ep):% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+    ves = np.random.randn(x\textbackslash{}_tren.shape[1])% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+    smesh = np.random.randn()% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+    error = []% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+    error2 = []% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+    arr\textbackslash{}_mape = []% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+    arr\textbackslash{}_mape2 = []% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+    for epoha in range (ep):% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+        err = 0% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+        err2 = 0% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+        mape = 0% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+        mape2 = 0% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+        for i in range (len(x\textbackslash{}_tren)):% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+            abrakadabra = np.dot(x\textbackslash{}_tren[i], ves) + smesh% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+            err\textbackslash{}_abrakadbra = y\textbackslash{}_tren[i] - abrakadabra% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+            ves = ves + lern\textbackslash{}_rait * err\textbackslash{}_abrakadbra * x\textbackslash{}_tren[i]% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+            smesh = smesh + lern\textbackslash{}_rait * err\textbackslash{}_abrakadbra% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+            err+=err\textbackslash{}_abrakadbra**2% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+            mape+=np.abs(err\textbackslash{}_abrakadbra / y\textbackslash{}_tren[i])% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+        err\textbackslash{}_mid = err / len(x\textbackslash{}_tren)% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+        mape\textbackslash{}_mid = mape / len(x\textbackslash{}_tren) * 100% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+        error.append(err\textbackslash{}_mid)% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+        arr\textbackslash{}_mape.append(mape\textbackslash{}_mid)% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Функция реализует процесс обучения персептрона с помощью дельта правила. Обучение происходит за несколько эпох, на каждой из которых модель корректирует веса и смещение в зависимости от ошибки предсказания.% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+После запуска кода мы получим несколько графиков (Рисунок 1, Рисунок 2, Рисунок 3, Рисунок 4):% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\end{enumerate}%
+\begin{figure}[H]%
+\centering%
+\includegraphics[width=0.8\textwidth]{documents/output/img\_6.png}%
+\end{figure}%
+\begin{center}%
+ % Шрифт-None Размер шрифта-None Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+Рисунок 1 – График зависимости истинных и предсказанных значений тренировочных данных% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{center}%
+\begin{figure}[H]%
+\centering%
+\includegraphics[width=0.8\textwidth]{documents/output/img\_7.png}%
+\end{figure}%
+\begin{center}%
+Рисунок 2 – График зависимости истинных и предсказанных значений тестовых данных% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{center}%
+\begin{flushleft}%
+На графиках представлено сравнение истинных и предсказанных значений. Цель графика — визуальная оценка качества прогнозирования: чем ближе предсказанные значения к истинным, тем лучше модель справляется с задачей.% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{figure}[H]%
+\centering%
+\includegraphics[width=0.8\textwidth]{documents/output/img\_8.png}%
+\end{figure}%
+\begin{center}%
+Рисунок 3 – График MSE по эпохам% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{center}%
+\begin{flushleft}%
+На данном графике отображается динамика изменения среднеквадратичной ошибки в зависимости от числа эпох обучения модели. График является важным инструментом для анализа процесса обучения и оценки сходимости модели.% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{figure}[H]%
+\centering%
+\includegraphics[width=0.8\textwidth]{documents/output/img\_9.png}%
+\end{figure}%
+\begin{center}%
+Рисунок 4 – График зависимости MSE от скорости обучения% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{center}%
+\begin{flushleft}%
+На данном графике представлено сравнение динамики изменения среднеквадратичной ошибки в зависимости от числа эпох обучения для различных значений скорости обучения. График демонстрирует влияние параметра learning\textbackslash{}_rate на процесс обучения модели и её сходимость.% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{figure}[H]%
+\centering%
+\includegraphics[width=0.8\textwidth]{documents/output/img\_10.png}%
+\end{figure}%
+\begin{center}%
+Рисунок 5 – График зависимости MSE от количества эпох% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{center}%
+\begin{flushleft}%
+На данном графике представлено сравнение динамики изменения среднеквадратичной ошибки в зависимости от числа эпох обучения модели. График демонстрирует влияние количества эпох на процесс обучения и сходимость модели.% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{figure}[H]%
+\centering%
+\includegraphics[width=0.8\textwidth]{documents/output/img\_11.png}%
+\end{figure}%
+\begin{center}%
+Рисунок 6 – График зависимости MAPE по эпохам% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{center}%
+\begin{flushleft}%
+На данном графике отображается динамика изменения среднеквадратичной ошибки в зависимости от числа эпох обучения модели.% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Также была проведена проверка на переобученность модели. На основе представленных выше графиков. Мы можем видеть, что ошибка на тестовых и % Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+тренировочных данных близки по значениям и на тренировочных вначале она выше (поскольку модель обучается). Небольшая разница между этими значениями указывает на то, что модель успешно обобщает информацию и не переобучается. Переобучение проявляется в виде значительного различия между ошибками на тренировочном% Шрифт-Courier New Размер шрифта-12.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+ и тестовом датасетах. Значения MSE достаточно низкие что говорит о хорошем качестве работы модели. Модель эффективно предсказывает целевую переменную как на обучающих данных, так и на новых данных.% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{center}%
+\textbf{Заключение}% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-None Правило-None %
+%
+\end{center}%
+\begin{flushleft}%
+ % Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-None Правило-None %
+%
+\end{flushleft}%
+\begin{flushleft}%
+В ходе выполнения лабораторной работы была реализована модель персептрона Розенблатта для решения задачи регрессии на основе сгенерированного временного ряда. С использованием заданных параметров был создан набор данных, который далее был преобразован в формат, пригодный для обучения модели. Для этого были сформированы входные и выходные пары методом скользящего окна, а также выполнена нормализация данных.% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Обучение модели осуществлялось с использованием дельта правила, где на каждой эпохе вычислялась среднеквадратичная ошибка, служащая основой для корректировки весовых коэффициентов и смещения.% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Сравнение истинных и предсказанных значений показало, что модель способна достаточно точно воспроизводить поведение временного ряда. График MSE по эпохам демонстрирует устойчивое снижение ошибки, что указывает на корректную реализацию алгоритма и успешное обучение модели.% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Для оценки качества модели были проанализированы графики ошибок для тренировочных и тестовых данных. Небольшая разница между этими значениями свидетельствует об отсутствии переобучения и подтверждает хорошую обобщающую способность модели. Таким образом, можно сделать вывод, что модель не только эффективно обучается на предоставленных данных, но и успешно адаптируется к новым примерам.% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\end{document}

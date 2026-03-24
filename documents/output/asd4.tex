@@ -1,0 +1,541 @@
+\documentclass{article}%
+\usepackage[T1]{fontenc}%
+\usepackage[utf8]{inputenc}%
+\usepackage{lmodern}%
+\usepackage{textcomp}%
+\usepackage{lastpage}%
+%
+\usepackage[russian]{babel}%
+\usepackage{fontenc}%
+\usepackage{graphicx}%
+\usepackage{float}%
+\usepackage{longtable}%
+\usepackage{array}%
+%
+\begin{document}%
+\normalsize%
+\begin{longtable}{|>{\centering\arraybackslash}p{17.176750000000002cm}|}%
+\hline%
+ФГБОУ ВО ЮГОРСКИЙ ГОСУДАРСТВЕННЫЙ УНИВЕРСИТЕТ% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+ \\ \hline \endfirsthead%
+\hline%
+ИНЖЕНЕРНАЯ ШКОЛА ЦИФРОВЫХ ТЕХНОЛОГИЙ% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+ \\ \hline%
+\end{longtable}%
+\begin{center}%
+ОТЧЕТ% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{center}%
+\begin{center}%
+по лабораторной работе № 2:% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{center}%
+\begin{center}%
+«Метод наискорейшего градиентного спуска»% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{center}%
+\begin{center}%
+По дисциплине:% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{center}%
+\begin{center}%
+«Машинное обучение»% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{center}%
+\begin{flushleft}%
+Выполнил: студент группы 1521б% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Евдакимов Егор Александрович% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Проверил: старший преподаватель% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Шицелов Анатолий Вячеславович% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{center}%
+г. Ханты-Мансийск, 2025 г.% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{center}%
+\begin{center}%
+\textbf{Содержание}% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{center}%
+\begin{flushleft}%
+% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-None Правило-None %
+%
+\end{flushleft}%
+\section{Описание работы}%
+\begin{flushleft}%
+	% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+\textbf{Цель работы}% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+: реализовать метод наискорейшего градиентного спуска для нахождения точки глобального минимума функции Бута.% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{center}%
+\textbf{Задачи}% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{center}%
+\begin{enumerate}%
+\item Реализовать метода наискорейшего градиентного спуска% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\item Отобразить график изменения значения функции по шагам% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\item Отобразить 3-х мерный график функции от X и Y% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\item Отобразить движение алгоритма на 3-х мерном графике% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{enumerate}%
+\subsection{Ход работы}%
+\begin{flushleft}%
+Формулы, которые понадобятся для выполнения работы:% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{enumerate}%
+\item Функция Бута % Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\item %
+\item Частная производная по x% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-None Правило-None %
+%
+\item %
+\item Частная производная по y% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-None Правило-None %
+%
+\item %
+\begin{flushleft}%
+В ходе реализации лабораторной работы были импортированы следующие модули Python (Листинг 1):% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Листинг 1 – Импорт модулей% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+import math% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+import numpy as np% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+import matplotlib.pyplot as plt% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+from mpl\textbackslash{}_toolkits.mplot3d import Axes3D% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Реализуем функцию Бута (Листинг 2):% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Листинг 2 – Функция Бута и ее частные производные% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+def f(x, y):% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+    return (x + 2 * y - 7) ** 2 + (2 * x + y - 5) ** 2% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+def dx(x, y):% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+    return 10 * x + 8 * y - 34% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+def dy(x, y):% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+    return 8 * x + 10 * y – 38% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+В этом листинге определена целевая функция Бута, которая используется для тестирования оптимизационных алгоритмов.
+Функция имеет глобальный минимум в точке (1,3).
+Также вычисляются ее частные производные, необходимые для градиентного спуска.% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+	Реализуем функцию золотого сечения для дальнейшего динамического вычисления шага обучения (Листинг 3):% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+	Листинг 3 – Функция золотого сечения% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+def golden\textbackslash{}_ratio(f, x, y, grad\textbackslash{}_x, grad\textbackslash{}_y):% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+    iter=100% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+    tol=1e-5% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+    a = 0% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+    b = 1% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+    fi = (math.sqrt(5) + 1) / 2% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+    c = b - (b - a) / fi% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+    d = a + (b - a) / fi% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+    for \textbackslash{}_ in range(iter):% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+        fc = f(x - c * grad\textbackslash{}_x, y - c * grad\textbackslash{}_y)% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+        fd = f(x - d * grad\textbackslash{}_x, y - d * grad\textbackslash{}_y)% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+        if fc $<$ fd:% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+            b = d% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+        else:% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+            a = c% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+        if abs(b - a) $<$ tol:% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+            break  % Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+        c = b - (b - a) / fi% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+        d = a + (b - a) / fi% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+    return (a + b) / 2% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Метод % Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+золотого сечения% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+, он используется для нахождения оптимального шага градиентного спуска.
+Метод итеративно сужает диапазон возможных значений шага, пока не достигнет заданной точности (tol=1e-5).
+В ходе работы алгоритм обновляет границы интервала [a, b] и вычисляет значения функции в точках % Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+c% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+ % Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+и % Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+d% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+, пока не найдет наилучший шаг.% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+	% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-None Правило-None %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Реализуем функцию градиентного спуска (Листинг 4):% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+	Листинг 4 – Функция градиентного спуска% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+def gradient\textbackslash{}_descent():% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+    num\textbackslash{}_iter = 100% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+    x = np.random.uniform(-10, 10)% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+    y = np.random.uniform(-10, 10)% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+    history = [(x, y, f(x, y))]% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+       for \textbackslash{}_ in range(num\textbackslash{}_iter):% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+        grad\textbackslash{}_x = dx(x, y)% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+        grad\textbackslash{}_y = dy(x, y)% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+        alpha = golden\textbackslash{}_ratio(f, x, y, grad\textbackslash{}_x, grad\textbackslash{}_y)% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+        x\textbackslash{}_2 = x - alpha * grad\textbackslash{}_x% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+        y\textbackslash{}_2 = y - alpha * grad\textbackslash{}_y % Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+        check\textbackslash{}_x = x\textbackslash{}_2 - x% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+        check\textbackslash{}_y = y\textbackslash{}_2 - y% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+        check\textbackslash{}_xy = np.sqrt(check\textbackslash{}_x ** 2 + check\textbackslash{}_y ** 2)% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+        if check\textbackslash{}_xy $<$ 0.00001: break% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+        x, y = x\textbackslash{}_2, y\textbackslash{}_2% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+        history.append((x, y, f(x, y)))% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+    return x, y, f(x, y), history% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-1.0 Правило-SINGLE (0) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Алгоритм % Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+наискорейшего градиентного спуска% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+, который находит минимум функции Бута. Он генерирует случайные стартовые значения, вычисляет градиент в данной точке, ищет оптимальный шаг с помощью функции золотого сечения, вычисляет следующую точку, от которой будет считаться следующий градиент и сохраняет все точки в массиве для дальнейшей визуализации спуска, также добавим остановку метода если точность найденного минимума меньше 0.00001.% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Вот, что мы получили при запуске кода (рисунок 1, рисунок 2, рисунок 3):% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Вывод в консоль:% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Точка минимума x: 0.9999999999999996 y: 3.0000000000000004% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Глобальный минимум функции Бута (1, 3), это практически совпадает с % Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+найденным значением% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+\textbf{,}% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+ что подтверждает корректность реализации метода.% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\end{enumerate}%
+\begin{figure}[H]%
+\centering%
+\includegraphics[width=0.8\textwidth]{images/img\_6.png}%
+\end{figure}%
+\begin{center}%
+Рисунок 1 – 3-х мерный график функции Билла% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{center}%
+\begin{flushleft}%
+На данном графике представлена поверхность функции Бута в трехмерном пространстве. X и Y – входные параметры функции; Z – значение функции в соответствующей точке.
+По данному графику можно наблюдать форму целевой функции, наличие минимумов и характер ее изменения.% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+	% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-None Правило-None %
+%
+\end{flushleft}%
+\begin{flushleft}%
+% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-None Правило-None %
+%
+\end{flushleft}%
+\begin{figure}[H]%
+\centering%
+\includegraphics[width=0.8\textwidth]{images/img\_7.png}%
+\end{figure}%
+\begin{center}%
+Рисунок 2 – движение алгоритма на 3-х мерном графике% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-None Правило-None %
+%
+\end{center}%
+\begin{flushleft}%
+Этот рисунок демонстрирует % Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+траекторию движения алгоритма% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+ градиентного спуска по поверхности функции.
+Красная линия отображает путь, который проделывает алгоритм от случайной начальной точки к глобальному минимуму.
+По визуализации видно, что алгоритм движется вниз по поверхности, постепенно снижая значение функции.% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+	% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-None Правило-None %
+%
+\end{flushleft}%
+\begin{figure}[H]%
+\centering%
+\includegraphics[width=0.8\textwidth]{images/img\_8.png}%
+\end{figure}%
+\begin{center}%
+Рисунок 3 – график изменения значения функции по шагам% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{center}%
+\begin{flushleft}%
+	Этот график показывает, как % Шрифт-None Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+значение целевой функции% Шрифт-None Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+ % Шрифт-None Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+уменьшается% Шрифт-None Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+ с каждой итерацией алгоритма.
+На оси % Шрифт-None Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+X% Шрифт-None Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+ – номер итерации, на оси % Шрифт-None Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+Y% Шрифт-None Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+ – значение функции Бута.
+По графику видно, что алгоритм быстро снижает значение функции на первых итерациях, а затем приближается к минимальному значению, показывая % Шрифт-None Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+сходимость метода% Шрифт-None Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+\textbf{.}% Шрифт-None Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Так же вычислим mape(средняя абсолютная ошибка)(Листинг 5, Рисунок 4)% Шрифт-None Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Листинг 5 – Функция mape% Шрифт-None Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+def mape(history, optimal\textbackslash{}_point):% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-None Правило-None %
+%
+\end{flushleft}%
+\begin{flushleft}%
+    final\textbackslash{}_mape = 0% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-None Правило-None %
+%
+\end{flushleft}%
+\begin{flushleft}%
+    for point in history:% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-None Правило-None %
+%
+\end{flushleft}%
+\begin{flushleft}%
+        m\textbackslash{}_x = abs((optimal\textbackslash{}_point[0] - point[0]) / optimal\textbackslash{}_point[0]) * 100% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-None Правило-None %
+%
+\end{flushleft}%
+\begin{flushleft}%
+        m\textbackslash{}_y = abs((optimal\textbackslash{}_point[1] - point[1]) / optimal\textbackslash{}_point[1]) * 100% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-None Правило-None %
+%
+\end{flushleft}%
+\begin{flushleft}%
+        mape = (m\textbackslash{}_x + m\textbackslash{}_y) / 2% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-None Правило-None %
+%
+\end{flushleft}%
+\begin{flushleft}%
+        final\textbackslash{}_mape += mape% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-None Правило-None %
+%
+\end{flushleft}%
+\begin{flushleft}%
+    final\textbackslash{}_mape /= len(history)% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-None Правило-None %
+%
+\end{flushleft}%
+\begin{flushleft}%
+    return final\textbackslash{}_mape% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-None Правило-None %
+%
+\end{flushleft}%
+\begin{flushleft}%
+final\textbackslash{}_mape = mape(history, optimal\textbackslash{}_point)% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-None Правило-None %
+%
+\end{flushleft}%
+\begin{flushleft}%
+print(f'Средняя абсолютная ошибка: \textbackslash{}{final\textbackslash{}_mape:.3f\textbackslash{}} \textbackslash{}%')% Шрифт-Courier New Размер шрифта-10.0 Межстрочный интервал-None Правило-None %
+%
+\end{flushleft}%
+\begin{flushleft}%
+В данном листинге реализована функция mape, предназначенная для оценки точности работы алгоритма градиентного спуска. MAPE (Mean Absolute Percentage Error) вычисляется как среднее значение процентной ошибки по осям X и Y на каждой итерации, по отношению к оптимальной точке минимума (в данном случае — (1, 3)). Итоговое значение MAPE позволяет количественно оценить, насколько эффективно алгоритм сходится к оптимальному решению, и может использоваться для сравнения с другими методами оптимизации. Чем ниже значение MAPE, тем ближе траектория спуска к реальному минимуму функции.% Шрифт-None Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{figure}[H]%
+\centering%
+\includegraphics[width=0.8\textwidth]{images/img\_9.png}%
+\end{figure}%
+\begin{center}%
+Рисунок 4 – Средняя абсолютная ошибка% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{center}%
+\begin{flushleft}%
+На изображении представлен текстовый вывод, демонстрирующий итоговое значение средней абсолютной процентной ошибки (MAPE), равное 4.585 \textbackslash{}%. Этот показатель отражает среднюю относительную погрешность приближенного решения, полученного методом градиентного спуска. Низкое значение ошибки подтверждает, что алгоритм с динамически изменяющимся шагом эффективно сходится к точке минимума функции.% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\section{Заключение}%
+\begin{flushleft}%
+В ходе выполнения лабораторной работы были успешно решены все поставленные задачи.% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Был разработан и реализован метод наискорейшего градиентного спуска для поиска глобального минимума функции Бута. В процессе работы алгоритм динамически вычислял оптимальный шаг с помощью метода золотого сечения для ускорения сходимости.% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Для визуализации результатов были построены следующие графики:3D-график функции Бута, траектория движения алгоритма в трехмерном пространстве, график изменения значения функции по итерациям.% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\begin{flushleft}%
+Результаты работы алгоритма показали, что он успешно находит глобальный минимум функции в точке (1,3) за наименьшее количество итераций, что подтверждает его эффективность.% Шрифт-Times New Roman Размер шрифта-14.0 Межстрочный интервал-1.5 Правило-ONE_POINT_FIVE (1) %
+%
+\end{flushleft}%
+\end{document}

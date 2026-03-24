@@ -1,0 +1,67 @@
+\documentclass{article}%
+\usepackage[T1]{fontenc}%
+\usepackage[utf8]{inputenc}%
+\usepackage{lmodern}%
+\usepackage{textcomp}%
+\usepackage{lastpage}%
+%
+\usepackage[russian]{babel}%
+\usepackage{fontenc}%
+\usepackage{graphicx}%
+\usepackage{float}%
+\usepackage{longtable}%
+\usepackage{array}%
+%
+\begin{document}%
+\normalsize%
+\section{Тестовый документ}%
+\begin{flushleft}%
+Это обычный текст.%
+\end{flushleft}%
+\begin{flushleft}%
+\textbf{\textit{Это жирный и курсивный текст.}}%
+\end{flushleft}%
+\begin{flushleft}%
+\textbf{Это жирный текст.}%
+\end{flushleft}%
+\begin{flushleft}%
+\textit{Это курсивный текст.}%
+\end{flushleft}%
+\begin{flushleft}%
+Это список.%
+\end{flushleft}%
+\begin{enumerate}%
+\item Это список.%
+\item \textbf{\textit{Это список жирный и курсивный.}}%
+\item \textbf{Это список жирный.}%
+\item \textit{Это}\textit{ список курсивный.}%
+\end{enumerate}%
+\begin{longtable}{|>{\raggedright\arraybackslash}p{3.190875cm}|>{\raggedright\arraybackslash}p{8.251472222222223cm}|>{\raggedright\arraybackslash}p{5.207cm}|}%
+\hline%
+ячейка & \textbf{\textit{жирная и курсивная ячейка}} & \textbf{Жирная ячейка} \\ \hline \endfirsthead%
+\hline%
+\textit{Курсивная ячейка} & ячейка & ячейка \\ \hline%
+ячейка & ячейка & ячейка \\ \hline%
+\end{longtable}%
+\begin{flushleft}%
+Это текст по левому краю%
+\end{flushleft}%
+\begin{flushright}%
+Это текст по правому краю%
+\end{flushright}%
+\begin{flushleft}%
+Это текст по ширине%
+\end{flushleft}%
+\begin{center}%
+Это текст по центру%
+\end{center}%
+\begin{figure}[H]%
+\centering%
+\includegraphics[width=0.8\textwidth]{images/img\_6.png}%
+\end{figure}%
+\section{Это заголовок 1 уровня}%
+\subsection{Это заголовок 2 уровня}%
+\subsubsection{Это заголовок 3 уровня}%
+\paragraph{Это заголовок 4 уровня}%
+\paragraph{Это заголовок 5 уровня}%
+\end{document}

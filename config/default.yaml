@@ -1,0 +1,40 @@
+# Конфигурация конвертера DOCX → LaTeX
+
+converter:
+  # Пакеты LaTeX для подключения
+  latex_packages:
+    - name: babel
+      options: [russian]
+    - name: fontenc
+    - name: graphicx
+    - name: float
+    - name: longtable
+    - name: array
+
+  # Настройки изображений
+  images:
+    width: 0.8  # Ширина изображений относительно текста
+    output_dir: images
+
+  # Настройки таблиц
+  tables:
+    default_column_width: 3.0  # см
+    use_longtable: true
+
+llm:
+  # Модель по умолчанию для сравнения документов
+  default_model: qwen3-coder-plus
+  
+  # Доступные модели
+  available_models:
+    - qwen3-coder-plus
+    - qwen3:8b
+  
+  # Таймаут запроса (секунды)
+  timeout: 120
+
+documents:
+  # Пути относительно корня проекта
+  input_dir: documents/input
+  output_dir: documents/output
+  templates_dir: documents/templates

@@ -1,0 +1,46 @@
+\documentclass{article}%
+\usepackage[T1]{fontenc}%
+\usepackage[utf8]{inputenc}%
+\usepackage{lmodern}%
+\usepackage{textcomp}%
+\usepackage{lastpage}%
+%
+\usepackage[russian]{babel}%
+\usepackage{fontenc}%
+\usepackage{graphicx}%
+\usepackage{float}%
+\usepackage{longtable}%
+\usepackage{array}%
+%
+\begin{document}%
+\normalsize%
+\begin{flushleft}%
+Тестовый документ%
+\end{flushleft}%
+\begin{flushleft}%
+Это обычный текст. \textbf{Это жирный текст. }\textit{Это курсивный текст. }\underline{Это подчеркнутый текст. }%
+\end{flushleft}%
+\begin{center}%
+Этот параграф выровнен по центру.%
+\end{center}%
+\section{Нумерованный список}%
+\begin{enumerate}%
+\item Первый элемент списка%
+\item Второй элемент списка%
+\item Третий элемент списка%
+\end{enumerate}%
+\section{Маркированный список}%
+\begin{itemize}%
+\item Первый элемент маркированного списка%
+\item Второй элемент маркированного списка%
+\item Третий элемент маркированного списка%
+\end{itemize}%
+\section{Таблица}%
+\begin{longtable}{|>{\raggedright\arraybackslash}p{5.08cm}|>{\raggedright\arraybackslash}p{5.08cm}|>{\raggedright\arraybackslash}p{5.08cm}|}%
+\hline%
+Заголовок 1 & Заголовок 2 & Заголовок 3 \\ \hline \endfirsthead%
+\hline%
+Строка 1, Колонка 1 & Строка 1, Колонка 2 & Строка 1, Колонка 3 \\ \hline%
+Строка 2, Колонка 1 & Строка 2, Колонка 2 & Строка 2, Колонка 3 \\ \hline%
+\end{longtable}%
+\end{document}
