@@ -46,7 +46,7 @@ st.markdown("Загрузите шаблон и документ для пров
 
 with st.sidebar:
     st.header("Настройки")
-    compare_model = st.selectbox("Модель для сравнения:", ["qwen3-coder-plus", "qwen3:8b"], index=0)
+    compare_model = st.selectbox("Модель для сравнения:", ["gpt-oss:120b-cloud"], index=0)
 
 col1, col2 = st.columns(2)
 with col1:
@@ -71,7 +71,7 @@ if st.button("Запустить проверку", type="primary", disabled=not
             document_latex, _, _ = convert_docx_to_latex(document_path)
             progress.progress(60)
 
-            comparison = compare_documents(template_latex, document_latex, compare_model)
+            comparison = compare_documents(template_latex, document_latex, compare_model, parallel = True)
             progress.progress(100)
             
             if 'error' in comparison:
